@@ -1,6 +1,6 @@
 # [starcrATI/PIVX-node](https://github.com/starcrATI/PIVX-node)
 
-![Docker Build Status](https://img.shields.io/docker/build/starcrati/pivx-node?label=Docker&style=for-the-badge)
+![Docker Build Status](![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/starcrati/pivx-node?style=for-the-badge))
 ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/starcrati/pivx-node?arch=amd64&sort=date&style=for-the-badge)
 ![Docker Pulls](https://img.shields.io/docker/pulls/starcrati/pivx-node?style=for-the-badge)
 
