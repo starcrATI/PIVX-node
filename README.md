@@ -85,7 +85,7 @@ docker run -d \
 
 ## Encrypt your wallet
 
-Please encrypt your wallet! Just for your own favour.
+Please encrypt your wallet! It's just for your own favour.
 
 - Connect to the running docker container: `docker exec -it pivx-node /bin/bash`
     - Encrypt wallet: `HOME=/data /app/pivx-${PIVX_VERSION}/bin/pivx-cli encryptwallet <passphrase>`
