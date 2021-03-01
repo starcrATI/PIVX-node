@@ -70,7 +70,7 @@ docker run -d \
 	- Pull the new image: `docker pull starcrati/pivx-node`
 - Delete old images: `docker image prune`
 
-## Parameters
+### Parameters
 
 | Parameter | Usage |
 | :----: | --- |
@@ -82,6 +82,15 @@ docker run -d \
 | -p 51475 | Use this port if you want to use the testnet |
 | -v /path/to/data | Mounts a directory on your host system into the container (contains .pivx and .pivx-params) |
 | --restart unless-stopped | Always restarts the container, unless it got shutdown on purpose
+
+## Encrypt your wallet
+
+Please encrypt your wallet! Just for your own favour.
+
+- Connect to the running docker container: `docker exec -it pivx-node /bin/bash`
+    - Encrypt wallet: `HOME=/data /app/pivx-${PIVX_VERSION}/bin/pivx-cli encryptwallet <passphrase>`
+    - Unconnect from the container: `exit`
+- Restart the container
 
 ## Acknowledgments
 
