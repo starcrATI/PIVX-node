@@ -1,0 +1,51 @@
+#!/usr/bin/with-contenv bash
+
+PARAMS_DIR=/data/.pivx-params
+
+SAPLING_SPEND_NAME='sapling-spend.params'
+SAPLING_OUTPUT_NAME='sapling-output.params'
+
+SHA256CMD="$(command -v sha256sum || echo shasum)"
+SHA256ARGS="$(command -v sha256sum >/dev/null || echo '-a 256')"
+
+function install_params {
+    local filename="$1"
+    local output="$2"
+    local expectedhash="$3"
+    local pivx_location="$4"
+
+    filename="$pivx_location/share/pivx/$filename"
+
+    if ! [ -f "$output" ]
+    then
+        "$SHA256CMD" $SHA256ARGS -c <<EOF
+$expectedhash  $filename
+EOF
+
+        CHECKSUM_RESULT=$?
+        if [ $CHECKSUM_RESULT -eq 0 ]; then
+            cp -v "$filename" "$output"
+        else
+            echo "Failed to verify parameter checksums!" >&2
+            exit 1
+        fi
+    fi
+}
+
+function main() {
+
+    echo "------------- installing saplings ------------------"
+
+    if ! [ -d "$PARAMS_DIR" ]
+    then
+        mkdir -p "$PARAMS_DIR"
+    fi
+
+    install_params "$SAPLING_SPEND_NAME" "$PARAMS_DIR/$SAPLING_SPEND_NAME" "8e48ffd23abb3a5fd9c5589204f32d9c31285a04b78096ba40a79b75677efc13" "/app/pivx-$PIVX_VERSION"
+    install_params "$SAPLING_OUTPUT_NAME" "$PARAMS_DIR/$SAPLING_OUTPUT_NAME" "2f0ebbcbb9bb0bcffe95a397e7eba89c29eb4dde6191c339db88570e3f3fb0e4" "/app/pivx-$PIVX_VERSION"
+
+    echo "------- installing saplings: successful ------------"
+}
+
+main
+exit 0

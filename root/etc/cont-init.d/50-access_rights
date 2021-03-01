@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+echo "---------- set access rights ----------"
+
+chown -R abc /data/.pivx
+chmod -R 700 /data/.pivx
+
+chown -R abc /data/.pivx-params
+chmod -R 700 /data/.pivx-params
+
+echo "---- set access rights: successful ----"

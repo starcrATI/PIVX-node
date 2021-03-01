@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+echo "--------- checking config ---------"
+
+
+if ! [ -d /data/.pivx ]; then
+    mkdir -p /data/.pivx
+fi
+
+if ! [ -f /data/.pivx/pivx.conf ]; then
+    echo "rpcuser=abc" > /data/.pivx/pivx.conf
+    echo "rpcpassword=$(pwgen 32 1)" >> /data/.pivx/pivx.conf
+fi
+
+echo "--- checking config: successful ---"
