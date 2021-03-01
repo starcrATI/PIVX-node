@@ -74,9 +74,9 @@ docker run -d \
 
 | Parameter | Usage |
 | :----: | --- |
-| PUID | Set the docker user id to the user id on your host system |
-| PGID | Set the docker user group id to the user group id on your host system |
-| TZ | Set your timezone |
+| -e PUID | Set the docker user id to the user id on your host system |
+| -e PGID | Set the docker user group id to the user group id on your host system |
+| -e TZ | Set your timezone |
 | -p 51472 | Use this port if you want to use the mainnet |
 | -p 51473 | Use this port if you want to use the rpc server |
 | -p 51475 | Use this port if you want to use the testnet |
